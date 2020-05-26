@@ -33,5 +33,10 @@
         android:paddingRight="6dp"
         android:text="Go!!!"
         />
+    <CheckBox android:id="@+id/checkbox_done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvFrom"
+        android:layout_toRightOf="@+id/tvAction"/>
 
 </RelativeLayout>

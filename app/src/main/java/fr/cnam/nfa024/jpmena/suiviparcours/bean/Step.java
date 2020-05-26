@@ -1,51 +1,74 @@
 package fr.cnam.nfa024.jpmena.suiviparcours.bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Step {
-    private Integer RoomFrom;
-    private Integer RoomTo;
-    private String displacment;
-    private Boolean done;
+public class Step implements Serializable {
+    private Integer mRoomFrom;
+    private Integer mRoomTo;
+    private String mDisplacment;
+    private Boolean mDone;
 
     public Step(Integer roomFrom, Integer roomTo, String displacment, Boolean done) {
-        RoomFrom = roomFrom;
-        RoomTo = roomTo;
-        this.displacment = displacment;
-        this.done = done;
+        mRoomFrom = roomFrom;
+        mRoomTo = roomTo;
+        mDisplacment = displacment;
+        mDone = done;
     }
 
-    public Integer getRoomFrom() {
-        return RoomFrom;
+    public Integer getmRoomFrom() {
+        return mRoomFrom;
     }
 
-    public void setRoomFrom(Integer roomFrom) {
-        RoomFrom = roomFrom;
+    public void setmRoomFrom(Integer mRoomFrom) {
+        this.mRoomFrom = mRoomFrom;
     }
 
-    public Integer getRoomTo() {
-        return RoomTo;
+    public Integer getmRoomTo() {
+        return mRoomTo;
     }
 
-    public void setRoomTo(Integer roomTo) {
-        RoomTo = roomTo;
+    public void setmRoomTo(Integer mRoomTo) {
+        this.mRoomTo = mRoomTo;
     }
 
-    public String getDisplacment() {
-        return displacment;
+    public String getmDisplacment() {
+        return mDisplacment;
     }
 
-    public void setDisplacment(String displacment) {
-        this.displacment = displacment;
+    public void setmDisplacment(String mDisplacment) {
+        this.mDisplacment = mDisplacment;
     }
 
-    public Boolean getDone() {
-        return done;
+    public Boolean getmDone() {
+        return mDone;
     }
 
-    public void setDone(Boolean done) {
-        this.done = done;
+    public void setmDone(Boolean mDone) {
+        this.mDone = mDone;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+
+        // If the object is compared with itself then return true
+        if (o == this) {
+            return true;
+        }
+
+        /* Check if o is an instance of Complex or not
+          "null instanceof [type]" also returns false */
+        if (!(o instanceof Step)) {
+            return false;
+        }
+
+        // typecast o to Complex so that we can compare data members
+        Step c = (Step) o;
+
+        // Compare the data members and return accordingly
+        return Integer.compare(mRoomFrom, c.getmRoomFrom()) == 0
+                && Integer.compare(mRoomTo, c.getmRoomTo()) == 0;
     }
 
     public static ArrayList<Step> loadSteps(){
